@@ -10,7 +10,7 @@ metadata:
   role: specialist
   scope: implementation-and-review
   output-format: code
-  related-skills: spark-engineer, alire
+  related-skills: gnatprove, alire
 ---
 
 # Ada-Pro
@@ -26,7 +26,9 @@ This skill exists because some AI models carry outdated or partially incorrect A
 subset) is mentioned only where directly relevant. Do not attempt SPARK proof,
 assurance levels, or ownership/borrow reasoning based on this skill alone —
 if the user asks about SPARK proof specifically, say so and point them to
-SPARK-specific documentation (or a dedicated SPARK skill) instead of guessing.
+SPARK-specific documentation (or a dedicated SPARK skill such as AdaCore's
+[`gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove))
+instead of guessing.
 
 ## Core Workflow
 
@@ -140,8 +142,9 @@ product name.
 - Do NOT invent standard-library package or subprogram names, or Alire
   commands that don't exist.
 - Do NOT attempt deep SPARK proof reasoning (assurance levels, ownership/
-  borrow, GNATprove internals) under this skill — say so and redirect
-  instead of guessing.
+  borrow, GNATprove internals) under this skill — say so and redirect to
+  AdaCore's [`gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove)
+  and the SPARK User's Guide instead of guessing.
 
 ## Reference Guide
 
@@ -154,13 +157,14 @@ case"; pick the one matching the task at hand.
 | Language core | `references/language-core.md` | Packages, private types, generics, tagged types/OOP, exceptions, tasking, access types, visibility/child units |
 | Contracts | `references/contracts.md` | `Pre`/`Post`/`Contract_Cases`, `Global`/`Depends`, class-wide contracts, Liskov substitution |
 | Ada 2022 features | `references/ada-2022-features.md` | Target name `@`, declare expressions, `'Reduce`, delta aggregates, string interpolation |
+| Strings & text | `references/strings-and-text.md` | String/Wide_String/Unbounded families, UTF-8/Unicode, `Ada.Strings.UTF_Encoding`, encodings, `Wide_Wide_Text_IO`, VSS |
 | Build & tooling | `references/build-and-tooling.md` | Alire details, `.gpr` project structure, gprbuild/gnatmake specifics, GNAT Studio / ALS / VS Code setup |
 | Verification | `references/verification.md` | GNAT SAS (`gnatsas`, static) vs GNAT DAS (`gnattest`/`gnatfuzz`/coverage, dynamic) usage, GNATcheck/MISRA, distinguishing static analysis from SPARK proof |
 | Embedded & runtimes | `references/embedded-and-runtimes.md` | Ravenscar/Jorvik profiles, light/embedded runtimes, bare-metal constraints |
 | Common pitfalls | `references/common-pitfalls.md` | Broader "what models get wrong" catalogue — stale idioms, hallucinated APIs, portability traps |
 
 > **Status:** the files in `references/` have initial content (drawn from
-> `agent-sh/ada-spark` and the forum research in `doc/issues_ada-lang.md`) and
+> community forum research on forum.ada-lang.io) and
 > are extended incrementally. If a reference file doesn't yet contain the answer
 > you need, fall back to the canonical sources below rather than guessing.
 
@@ -181,5 +185,6 @@ Canonical sources — verify against these, do not rely on memory alone:
 - [GNAT_UGX — cross-development / embedded targets](https://docs.adacore.com/live/wave/gnat_ugx/html/gnat_ugx/gnat_ugx.html)
 - [Alire documentation](https://alire.ada.dev/docs/)
 - [AdaCore's `alire` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/alire) — authoritative, agent-oriented Alire command reference (search, toolchain, get, with, pin, install, build, run, exec, printenv); prefer it over this file for exact `alr` subcommand semantics
+- [AdaCore's `gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove) — authoritative `gnatprove`/SPARK-proof tool usage; the redirect target when a task turns out to need SPARK proof (out of scope here)
 - [GNAT SAS (Static Analysis Suite) User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/gnatsas_ug/gnatsas_ug.html) — `gnatsas analyze` / `gnatsas report` usage and flags; rely on `gnatsas --help` and this guide.
 - [What's New in Ada 2022 (learn.adacore.com)](https://learn.adacore.com/courses/whats-new-in-ada-2022/)

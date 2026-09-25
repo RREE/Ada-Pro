@@ -2,14 +2,26 @@
 
 _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
 
+> Sources: the Ada 2022 RM, learn.adacore.com, and `Ada-Pro`'s corrections.
+
 ## The language version
 
 - **Ada 2022 is the current, finalized standard.** The claim "the latest Ada is
   Ada 2012" is stale (correction-map core rule).
-- Enable it with `-gnat2022` or `pragma Ada_2022`; it is the default language
-  version in recent GNAT releases.
-- When a project or toolchain targets Ada 2012 (common for certified/commercial
-  compilers), say so and consult the Ada 2012 RM instead of assuming 2022.
+- GNAT does **not** default to Ada 2022.
+  Enable Ada 2022 explicitly with
+  `-gnat2022` or `pragma Ada_2022`.
+- With Alire, select Ada 2022 in `alire.toml` via build switches —
+  `alr init` does not do this for you:
+
+  ```toml
+  [build-switches]
+  "*".ada_version = "Ada2022"
+  ```
+
+- When a project or toolchain targets Ada 2012 (the GNAT default, still common
+  for certified/commercial compilers), say so and consult the Ada 2012 RM
+  instead of assuming 2022.
 
 ## What changed vs Ada 2012
 

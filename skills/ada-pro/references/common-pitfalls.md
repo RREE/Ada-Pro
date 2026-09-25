@@ -3,8 +3,7 @@
 _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand. "What models get
 wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
 
-> Sources: `agent-sh/ada-spark` "what strong models get wrong" + correction map;
-> corroborated by forum.ada-lang.io threads (see `doc/issues_ada-lang.md`).
+> Sources: the correction map plus community threads on forum.ada-lang.io.
 
 ## Stale toolchain advice
 
@@ -55,8 +54,27 @@ wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
   coding-agent methodology. If the task is Ada SPARK specifically, say so —
   don't merge it with same-named products.
 - **SPARK proof is out of scope for Ada-Pro**: ownership/borrow, `SPARK_Mode`,
-  assurance levels, loop invariants, ghost code. Point to `agent-sh/ada-spark` /
-  the SPARK User's Guide instead of guessing.
+  assurance levels, loop invariants, ghost code. Point to AdaCore's
+  [`gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove)
+  and the SPARK User's Guide instead of guessing.
+
+## Formatting & style policy
+
+- **There is no single "correct" Ada style.** `-gnaty...` (GNAT style checks),
+  `gnatformat`'s output, and the RM's own examples disagree in places (the RM
+  omits a space before `(` in subprogram calls; line-length conventions vary
+  by editor). Style is a **project-level policy choice** — never assert one
+  true style when reviewing code.
+- Hints for handling style in a project:
+  - Pick **one** formatting tool per project (`gnatformat`, see
+    `build-and-tooling.md`) and/or a `-gnaty` switch set, document it in the
+    `.gpr` or README, and pin the tool version.
+  - Default to the formatter's output when reviewing; flag genuine style
+    *policy* questions back to the user instead of silently "fixing" code to
+    your own preference.
+  - When a style rule is contested (spacing, casing, line length), treat the
+    existing project convention as authoritative, not your memory of "Ada
+    style".
 
 ## Platform rough edges
 
@@ -65,9 +83,11 @@ wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
   before debugging your code.
 - Ada's `String` is an array of `Character` (8-bit, Latin-1), **not UTF-8**.
   For real UTF-8 use `Ada.Strings.UTF_Encoding`; `Wide_Wide_Text_IO` encoding
-  has known rough edges — don't paper over them confidently.
+  has known rough edges — don't paper over them confidently. Full detail,
+  including the type-conversion API and third-party options (VSS, uxstrings,
+  Matreshka): `strings-and-text.md`.
 
 ## References
 - Ada 2022 Reference Manual (unit index): https://www.ada-auth.org/standards/22rm/html/RM-TOC.html
 - GNAT RM — Implementation of Ada 2022 features: https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-of-Ada-2022-Features.html
-- Forum research this file draws on: `doc/issues_ada-lang.md`
+- Forum research this file draws on: forum.ada-lang.io threads (beginner, string/UTF-8, style and formatter topics)

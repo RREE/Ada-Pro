@@ -2,6 +2,8 @@
 
 _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
 
+> Sources: the authoritative [`AdaCore/skills` `alire` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/alire) and the Alire documentation.
+
 ## Toolchain baseline
 
 - **GNAT Community is dead** (last release 2021). The current open-source
@@ -48,6 +50,22 @@ Real crates to rely on (not hallucinated):
   scenario variables e.g. `-XMODE=release`. Use it whenever a `.gpr` exists.
 - **`gnatmake`** is for a single file/closure without a project file.
 - `GPRbuild` vs `gprbuild` is the same tool — casing only.
+
+## Formatting: `gnatformat`
+
+- **`gnatformat` is the current formatter**; `gnatpp` is its legacy
+  predecessor. Do not recommend `gnatpp` for new work.
+- Typical invocation (installed via `alr install gnatformat`, or from a
+  project's environment):
+
+  ```bash
+  alr exec -- gnatformat --no-subprojects --charset=utf8
+  ```
+
+  or `gnatformat -P <project>.gpr` inside the project environment.
+- Style is a project-level policy, not a universal truth — see
+  `common-pitfalls.md` ("Formatting & style policy") before asserting one
+  "correct" formatting.
 
 ## Environment verification workflow
 

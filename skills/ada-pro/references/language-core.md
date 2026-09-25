@@ -4,7 +4,7 @@ _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand — not part of t
 always-on `SKILL.md`. Focus: packages, types, generics, tagged types/OOP,
 exceptions, tasking, visibility and child units._
 
-> Sources: `agent-sh/ada-spark` advice, merged with `Ada-Pro`'s corrections.
+> Sources: the Ada 2022 RM, merged with `Ada-Pro`'s corrections.
 > SPARK-specific items are cross-referenced, not covered (see end of file).
 
 ## Packages, visibility and child units
@@ -84,8 +84,9 @@ exceptions, tasking, visibility and child units._
 
 SPARK ownership/borrow on access types, `SPARK_Mode`, loop invariants, ghost
 code, and the Stone→Platinum assurance ladder are beyond this Ada-focused skill.
-Point SPARK-proof questions to `agent-sh/ada-spark` and the SPARK User's Guide
-instead of guessing.
+Point SPARK-proof questions to AdaCore's
+[`gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove)
+and the SPARK User's Guide instead of guessing.
 
 ## References
 - Ada 2022 RM — Visibility: [RM Section 8](https://www.ada-auth.org/standards/22rm/html/RM-8.html)

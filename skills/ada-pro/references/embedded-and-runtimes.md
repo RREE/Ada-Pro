@@ -2,7 +2,8 @@
 
 _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
 
-> Sources: `agent-sh/ada-spark` advice, merged with `Ada-Pro`'s corrections.
+> Sources: the Ada 2022 RM (profiles, D.13) and the GNAT UGX, merged with
+> `Ada-Pro`'s corrections.
 
 ## Choose the runtime and tasking profile before designing the code
 

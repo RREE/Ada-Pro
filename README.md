@@ -37,6 +37,7 @@ Ada-Pro/
       language-core.md     Packages, types, generics, OOP, tasking, visibility
       contracts.md         Pre/Post/Contract_Cases, class-wide contracts, LSP
       ada-2022-features.md @, declare expressions, 'Reduce, delta aggregates
+      strings-and-text.md    String families, UTF-8/Unicode, encodings, VSS
       build-and-tooling.md Alire, gprbuild, .gpr files, GNAT Studio/ALS
       verification.md      GNAT SAS & GNAT DAS & GNATcheck
       embedded-and-runtimes.md  Ravenscar/Jorvik, light runtimes
@@ -94,7 +95,9 @@ review this .gpr project file
 ## Related work
 
 - [`agent-sh/ada-spark`](https://github.com/agent-sh/ada-spark) — Ada + SPARK
-  combined; this one tries to improve on it.
+  combined; prior art this one tries to improve on. Not used as a SPARK
+  knowledge source by this skill — see the `gnatprove` skill below.
+- [AdaCore's `gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove) — the SPARK proof tool skill; the redirect target for SPARK-proof questions, which Ada-Pro does not cover.
 - [`AdaCore/skills`](https://github.com/AdaCore/skills) — official tool skills
   (`alire`, `gnatdoc`, `gnatfuzz`, `gnatprove`, `gnattest`), the authoritative
   `alr` command reference.

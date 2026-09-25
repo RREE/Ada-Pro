@@ -3,6 +3,8 @@
 _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand. Covers static
 and dynamic verification/analysis tooling (GNAT SAS, GNAT DAS, GNATcheck)._
 
+> Sources: `AdaCore/gnat-foundry-intersection` and gnatsas documentation.
+
 ## GNAT SAS — static defect-finding (ex-CodePeer)
 
 - The product was renamed: CLI is **`gnatsas`**, not `codepeer`. Commands are
@@ -39,7 +41,9 @@ and adacore.com/gnatpro.
 
 GNATprove (SPARK-only formal proof): assurance levels, loop invariants, ghost
 code, ownership/borrow. This skill is Ada-focused — point SPARK-proof questions
-to `agent-sh/ada-spark` / the SPARK User's Guide.
+to AdaCore's
+[`gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove)
+and the SPARK User's Guide.
 
 ## References
 - [GNAT SAS User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/gnatsas_ug/gnatsas_ug.html)

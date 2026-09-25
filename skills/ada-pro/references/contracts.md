@@ -2,7 +2,7 @@
 
 _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
 
-> Sources: `agent-sh/ada-spark` advice, merged with `Ada-Pro`'s corrections.
+> Sources: the Ada 2022 RM, merged with `Ada-Pro`'s corrections.
 > SPARK-proof follow-up (GNATprove, assurance levels) is cross-referenced, not
 > covered — this skill is Ada-focused.
 
@@ -63,9 +63,9 @@ mistake:
 
 `SPARK_Mode` (three-valued `On`/`Off`/`Auto`), GNATprove assurance levels
 (Stone→Bronze→Silver→Gold→Platinum), manual loop invariants, ghost code, and
-ownership/borrow are SPARK-proof territory. Point the user to
-`agent-sh/ada-spark` and the SPARK User's Guide rather than attempting proof
-under this skill.
+ownership/borrow are SPARK-proof territory. Point the user to AdaCore's
+[`gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove)
+and the SPARK User's Guide rather than attempting proof under this skill.
 
 ## References
 - Ada 2022 RM — Aspect clauses: [RM 13.3.1](https://www.ada-auth.org/standards/22rm/html/RM-13-3-1.html)
