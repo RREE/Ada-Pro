@@ -25,6 +25,10 @@ exceptions, tasking, visibility and child units._
   never jumps to the next iteration. Restructure, or use a named-loop `exit`
   combined with an `if`, to get "skip this iteration" behavior.
 
+## I/O basics
+
+_Content pending._
+
 ## Strong typing
 
 - Prefer strong, explicit types: derived types and subtypes with `range` /
@@ -33,6 +37,22 @@ exceptions, tasking, visibility and child units._
   type system.
 - `'Size` applies to the object/type it is named on; on an access value it is
   the size of the pointer, not the pointee (a C-derived assumption that misleads).
+
+## Numeric type selection
+
+_Content pending._
+
+## Arrays
+
+_Content pending._
+
+## Records
+
+_Content pending._
+
+## Subprogram parameter modes
+
+_Content pending._
 
 ## Generics
 
@@ -65,6 +85,10 @@ exceptions, tasking, visibility and child units._
 - `task` and `protected` types are **limited types**; a standard container
   cannot hold a task object directly. Use an access-to-task type or a task pool
   pattern instead of expecting `Ada.Containers.Vectors` to hold tasks.
+
+## Containers (`Ada.Containers`)
+
+_Content pending._
 
 ## Boolean operators (short-circuit)
 

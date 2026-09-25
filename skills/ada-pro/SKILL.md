@@ -1,7 +1,7 @@
 ---
 name: ada-pro
 description: "Use when writing, reviewing, porting, or debugging Ada code — .ada/.adb/.ads/.gpr files, Ada packages, generics, tagged types, exceptions, tasking, contracts (Pre/Post/Contract_Cases), Alire (alr) projects, or GNAT/GNAT SAS tooling. Targets current Ada (Ada 2022) and the current toolchain (Alire + GNAT FSF, GNAT Pro). Focus is plain Ada; SPARK is only referenced in passing where relevant, not covered in depth. Not for unrelated languages. This skill exists specifically to correct outdated or hallucinated Ada knowledge — read it fully before writing or judging any Ada code."
-allowed-tools: Read, Edit, Write, Grep, Glob, Bash(alr:*), Bash(gnatmake:*), Bash(gprbuild:*), Bash(gnat:*), Bash(gnatsas:*), Bash(gnatformat:*), Bash(gnatcheck:*)
+allowed-tools: Read, Edit, Write, Grep, Glob, Bash(alr:*), Bash(gnatmake:*), Bash(gprbuild:*), Bash(gnat:*), Bash(gnatsas:*), Bash(gnatformat:*), Bash(gnatcheck:*), Bash(gnatcov:*)
 license: MIT
 metadata:
   version: "0.1.0"
@@ -178,7 +178,7 @@ Canonical sources — verify against these, do not rely on memory alone:
 
 - [Ada 2022 Reference Manual](http://www.ada-auth.org/standards/22rm/html/RM-TOC.html)
 - [Ada 2022 Annotated Reference Manual (AARM)](https://www.adaic.org/resources/add_content/standards/22aarm/html/AA-TTL.html)
-- [Ada 2012 Reference Manual](http://www.ada-auth.org/standards/12rm/html/RM-TOC.html) — many commercial/certified compilers and projects still target Ada 2012, not Ada 2022; consult this when when the user requires Ada 2012.
+- [Ada 2012 Reference Manual](http://www.ada-auth.org/standards/12rm/html/RM-TOC.html) — many commercial/certified compilers and projects still target Ada 2012, not Ada 2022; consult this when the user requires Ada 2012.
 - [Ada 2012 Annotated Reference Manual (AARM)](http://www.ada-auth.org/standards/12aarm/html/AA-TTL.html)
 - [GNAT Reference Manual](https://docs.adacore.com/live/wave/gnat_rm/html/gnat_rm/gnat_rm.html)
 - [GNAT User's Guide](https://docs.adacore.com/live/wave/gnat_ugn/html/gnat_ugn/gnat_ugn.html)

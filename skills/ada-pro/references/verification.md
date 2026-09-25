@@ -13,6 +13,10 @@ and dynamic verification/analysis tooling (GNAT SAS, GNAT DAS, GNATcheck)._
   (`.sam`/`.sar`), not a SQL database; the old CodePeer `--level 0..4` switch is
   gone. Base result and diff to gate *only new* findings. SARIF output for CI.
 - MISRA is enforced via **GNATcheck**; custom checks are written in **LKQL**.
+  Invoke it against a project with a MISRA rule file, e.g.
+  `gnatcheck -P <project>.gpr -rules <misra_rules_file>` — the rule files ship
+  with the GNATcheck distribution; confirm exact rule-set names and flags with
+  `gnatcheck --help` rather than guessing.
 
 ### Soundness — never conflate GNAT SAS with proof
 
@@ -30,7 +34,8 @@ A **separate** product family from GNAT SAS:
 
 - Unit testing: `gnattest` (AUnit harness generation).
 - Fuzz testing: `gnatfuzz` (coverage-guided).
-- Structural coverage: MC/DC, statement coverage (Ada and C/C++).
+- Structural coverage with **`gnatcov`**: MC/DC, statement coverage (Ada and
+  C/C++).
 
 Do not conflate GNAT SAS (static defects) with GNAT DAS (dynamic
 testing/coverage) — marketed and licensed separately. Confirmed via
@@ -47,7 +52,13 @@ and the SPARK User's Guide.
 
 ## References
 - [GNAT SAS User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/gnatsas_ug/gnatsas_ug.html)
+- AdaCore agent skills for the DAS tools — consult these for exact subcommand
+  semantics instead of guessing:
+  [`gnattest`](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnattest),
+  [`gnatfuzz`](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatfuzz),
+  [`gnatdoc`](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatdoc)
 - Note: AdaCore/skills (https://github.com/AdaCore/skills) has no dedicated
   `gnatsas` agent skill as of this writing — only `alire`, `gnatdoc`,
-  `gnatfuzz`, `gnatprove`, `gnattest`. Do not assume `/gnatsas` exists as a
-  slash command; consult `gnatsas --help` and the User's Guide instead.
+  `gnatfuzz`, `gnatprove`, `gnattest` (linked above). Do not assume `/gnatsas`
+  exists as a slash command; consult `gnatsas --help` and the User's Guide
+  instead.
