@@ -29,6 +29,10 @@ function Sqrt (X : Float) return Float
   semantics require an exhaustive case analysis of the precondition space).
   Do not write overlapping guards.
 - Each case pairs a guard with the `Post` that holds when the guard holds.
+- For the full worked example and the exact guard-checking rules (`others` ⇒
+  only disjointness is checked; without it, completeness too), see AdaCore's
+  [`gnatprove` skill — contracts.md](https://github.com/AdaCore/skills/blob/main/plugins/adacore/skills/gnatprove/references/spark/contracts.md)
+  rather than duplicating it here.
 
 ## Contract aspects beyond Pre/Post
 

@@ -38,6 +38,7 @@ Ada-Pro/
       contracts.md         Pre/Post/Contract_Cases, class-wide contracts, LSP
       ada-2022-features.md @, declare expressions, 'Reduce, delta aggregates
       strings-and-text.md    String families, UTF-8/Unicode, encodings, VSS
+      style-and-naming.md    Casing, suffixes, singular/plural names
       build-and-tooling.md Alire, gprbuild, .gpr files, GNAT Studio/ALS
       verification.md      GNAT SAS & GNAT DAS & GNATcheck
       embedded-and-runtimes.md  Ravenscar/Jorvik, light runtimes

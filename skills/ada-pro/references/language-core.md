@@ -17,10 +17,6 @@ exceptions, tasking, visibility and child units._
   from other languages: a child unit sees its parent's private part; siblings
   only via `with`. When in doubt, consult the RM's visibility rules rather than
   guessing.
-- **Keep public package names distinct from public type and object names in the
-  same API.** Use plural child package names for collections of related types,
-  e.g. `Labels.Label`, `Buttons.Button`, `Displays.Display` —
-  not a package and its primary type sharing one name.
 - Ada loops have no `continue`: `exit when <cond>` always exits the loop — it
   never jumps to the next iteration. Restructure, or use a named-loop `exit`
   combined with an `if`, to get "skip this iteration" behavior.
@@ -51,6 +47,10 @@ _Content pending._
 _Content pending._
 
 ## Subprogram parameter modes
+
+_Content pending._
+
+## Return-by-value and build-in-place
 
 _Content pending._
 

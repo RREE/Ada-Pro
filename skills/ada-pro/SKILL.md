@@ -158,6 +158,7 @@ case"; pick the one matching the task at hand.
 | Contracts | `references/contracts.md` | `Pre`/`Post`/`Contract_Cases`, `Global`/`Depends`, class-wide contracts, Liskov substitution |
 | Ada 2022 features | `references/ada-2022-features.md` | Target name `@`, declare expressions, `'Reduce`, delta aggregates, string interpolation |
 | Strings & text | `references/strings-and-text.md` | String/Wide_String/Unbounded families, UTF-8/Unicode, `Ada.Strings.UTF_Encoding`, encodings, `Wide_Wide_Text_IO`, VSS |
+| Style & naming | `references/style-and-naming.md` | Casing, indentation, `_T`/`_Access` suffixes, singular/plural package names |
 | Build & tooling | `references/build-and-tooling.md` | Alire details, `.gpr` project structure, gprbuild/gnatmake specifics, GNAT Studio / ALS / VS Code setup |
 | Verification | `references/verification.md` | GNAT SAS (`gnatsas`, static) vs GNAT DAS (`gnattest`/`gnatfuzz`/coverage, dynamic) usage, GNATcheck/MISRA, distinguishing static analysis from SPARK proof |
 | Embedded & runtimes | `references/embedded-and-runtimes.md` | Ravenscar/Jorvik profiles, light/embedded runtimes, bare-metal constraints |
@@ -187,4 +188,6 @@ Canonical sources — verify against these, do not rely on memory alone:
 - [AdaCore's `alire` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/alire) — authoritative, agent-oriented Alire command reference (search, toolchain, get, with, pin, install, build, run, exec, printenv); prefer it over this file for exact `alr` subcommand semantics
 - [AdaCore's `gnatprove` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnatprove) — authoritative `gnatprove`/SPARK-proof tool usage; the redirect target when a task turns out to need SPARK proof (out of scope here)
 - [GNAT SAS (Static Analysis Suite) User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/gnatsas_ug/gnatsas_ug.html) — `gnatsas analyze` / `gnatsas report` usage and flags; rely on `gnatsas --help` and this guide.
+- [GNATcoverage User's Guide (GNAT DAS Manuals)](https://docs.adacore.com/live/wave/gnatcoverage/html/gnatcov_ug/gnatcov/gnatcov_part.html) — `gnatcov` coverage analysis (see `references/verification.md`)
+- [learn.adacore.com Ada courses](https://learn.adacore.com/courses/) — [Introduction to Ada](https://learn.adacore.com/courses/intro-to-ada/index.html) and [Advanced Ada](https://learn.adacore.com/courses/advanced-ada/index.html); the SPARK course covers the out-of-scope proof material
 - [What's New in Ada 2022 (learn.adacore.com)](https://learn.adacore.com/courses/whats-new-in-ada-2022/)
