@@ -39,7 +39,7 @@ instead of guessing.
    `MUST NOT DO`) to everything you write or review — on every task, not
    just some.
 3. **Consult references for anything version-sensitive or non-obvious** —
-   an aspect's exact semantics, a GNAT SAS flag, a runtime profile — before
+   an aspect's exact semantics, a GNAT flag, a runtime profile — before
    committing to an answer (see Reference Guide below).
 4. **Implement** — new code: aspect-based contracts, strong explicit types, Ada 2022
    (`-gnat2022`) by default unless told otherwise.
@@ -59,20 +59,20 @@ tooling/ecosystem corrections.
 
 ### Language corrections
 
-| Stale (do NOT use/say) | Current (use this instead) | Why |
-|---|---|---|
-| `pragma Precondition (...)` / `pragma Postcondition (...)` | `with Pre => ...` / `with Post => ...` aspects | Aspects (Ada 2012+) are the idiomatic, modern form. |
-| Plain `Pre` / `Post` on a dispatching (`overriding`) primitive of a `tagged` type | `Pre'Class` / `Post'Class` | A specific `Pre`/`Post` is not checked for dispatching calls and is not properly inherited. Only the class-wide form governs dispatching. |
-| "The latest Ada is Ada 2012" | Ada 2022 is finalized and current | Use `-gnat2022` or `pragma Ada_2022` when relevant. |
-| `Ada.IO`, `Ada.Strings.Format`, `Ada.Collections` (as package names) | `Ada.Text_IO`, `Ada.Strings.Fixed` / `Ada.Strings.Unbounded`, `Ada.Containers.Vectors` (etc.) | These exact names do not exist. Never invent a package name — say you're unsure and look it up rather than guessing. |
+| Stale (do NOT use/say)                                                            | Current (use this instead)                                                                    | Why                                                                                                                                       |
+| --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| `pragma Precondition (...)` / `pragma Postcondition (...)`                        | `with Pre => ...` / `with Post => ...` aspects                                                | Aspects (Ada 2012+) are the idiomatic, modern form.                                                                                       |
+| Plain `Pre` / `Post` on a dispatching (`overriding`) primitive of a `tagged` type | `Pre'Class` / `Post'Class`                                                                    | A specific `Pre`/`Post` is not checked for dispatching calls and is not properly inherited. Only the class-wide form governs dispatching. |
+| "The latest Ada is Ada 2012"                                                      | Ada 2022 is finalized and current                                                             | Use `-gnat2022` or `pragma Ada_2022` when relevant.                                                                                       |
+| `Ada.IO`, `Ada.Strings.Format`, `Ada.Collections` (as package names)              | `Ada.Text_IO`, `Ada.Strings.Fixed` / `Ada.Strings.Unbounded`, `Ada.Containers.Vectors` (etc.) | These exact names do not exist. Never invent a package name — say you're unsure and look it up rather than guessing.                      |
 
 ### Tooling & ecosystem corrections
 
-| Stale (do NOT use/say) | Current (use this instead) | Why |
-|---|---|---|
-| "Download GNAT Community Edition" | Alire (`alr`) + GNAT FSF | GNAT Community was discontinued (last release 2021). |
+| Stale (do NOT use/say)                                                  | Current (use this instead)                                                                                                                                                                                                                 | Why                                                                                                                                                                    |
+| ----------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| "Download GNAT Community Edition"                                       | Alire (`alr`) + GNAT FSF                                                                                                                                                                                                                   | GNAT Community was discontinued (last release 2021).                                                                                                                   |
 | `alr install <package>` used to mean "add this as a project dependency" | `alr with <crate>` adds a dependency to the *current* project; `alr install <crate>` is a *different* command that installs a binary-tool crate (e.g. `gnatformat`, `gnatsas`) to a shared prefix, available on `PATH` outside any project | Alire is not a system package manager in the apt/npm sense, but `alr install` does exist — for global tool installs, not project dependencies. Don't conflate the two. |
-| "GPS" (GNAT Programming Studio) as the current IDE | GNAT Studio, or the Ada & SPARK VS Code extension + Ada Language Server (ALS) | GPS was renamed to GNAT Studio; VS Code + ALS is an increasingly common modern setup. |
+| "GPS" (GNAT Programming Studio) as the current IDE                      | GNAT Studio, or the Ada & SPARK VS Code extension + Ada Language Server (ALS)                                                                                                                                                              | GPS was renamed to GNAT Studio; VS Code + ALS is an increasingly common modern setup.                                                                                  |
 
 When you are not sure whether something is version-sensitive (a tool flag, a
 package name, an aspect name), say so explicitly and, if possible, verify
@@ -103,23 +103,15 @@ product name.
   `alr init --bin myproj` / `alr init --lib myproj`, `alr with <crate>` to
   add a project dependency, `alr build`, `alr run`, `alr toolchain --select`,
   `alr search <crate>`, `alr get <crate>` to fetch a crate's sources,
-  `alr install <crate>` to install a binary-tool crate to a shared prefix
-  (distinct from `alr with`), `alr pin` to pin a dependency to a local path
-  or Git repo, `alr exec` / `alr printenv` to run in or inspect the project
-  environment.
-- Use `gprbuild -P <project>.gpr` (supports scenario variables like
-  `-XMODE=release`) for anything with a `.gpr` file; use `gnatmake` only for
-  a single file/closure without a project file.
+  `alr install <crate>` to install a binary-tool crate to a shared prefix (distinct from `alr with`), `alr pin` to pin a dependency to a local path or Git repo, `alr exec` / `alr printenv` to run in or inspect the project environment.
+- Use `gprbuild -P <project>.gpr` (supports scenario variables like `-XMODE=release`) for anything with a `.gpr` file; use `gnatmake` only for a single file/closure without a project file.
+- Prefer strong, explicit types (derived types, subtypes with range/digits/delta constraints) over a single general-purpose numeric type.
 - Write contracts as aspects on the declaration: `function F (X : T) return
-  U with Pre => <condition>, Post => F'Result = <expr>;`. Use `'Result` for
-  the return value in `Post`, and `X'Old` for the entry-time value.
+  U with Pre => <condition>, Post => F'Result = <expr>;`. Use `'Result` for the return value in `Post`, and `X'Old` for the entry-time value.
 - Use `Pre'Class` / `Post'Class` (not plain `Pre`/`Post`) on a `tagged`
   type's dispatching (`overriding`) primitives.
 - Use `and then` / `or else` instead of `and`/`or` whenever short-circuit
-  evaluation matters (dereference guards, division
-  guards).
-- Prefer strong, explicit types (derived types, subtypes with range/digits/
-  delta constraints) over a single general-purpose numeric type.
+  evaluation matters (dereference guards, division guards).
 - Qualify anything version-sensitive explicitly, e.g. "as of GNAT FSF
   &lt;version&gt; / Ada 2022" — never present version-sensitive facts as
   timeless.
@@ -152,17 +144,17 @@ Load detailed guidance based on context — read the matching file when a task
 needs more depth than this file provides. Do not load all of them "just in
 case"; pick the one matching the task at hand.
 
-| Topic | Reference | Load When |
-|---|---|---|
-| Language core | `references/language-core.md` | Packages, private types, generics, tagged types/OOP, exceptions, tasking, access types, visibility/child units |
-| Contracts | `references/contracts.md` | `Pre`/`Post`/`Contract_Cases`, `Global`/`Depends`, class-wide contracts, Liskov substitution |
-| Ada 2022 features | `references/ada-2022-features.md` | Target name `@`, declare expressions, `'Reduce`, delta aggregates, string interpolation |
-| Strings & text | `references/strings-and-text.md` | String/Wide_String/Unbounded families, UTF-8/Unicode, `Ada.Strings.UTF_Encoding`, encodings, `Wide_Wide_Text_IO`, VSS |
-| Style & naming | `references/style-and-naming.md` | Casing, indentation, `_T`/`_Access` suffixes, singular/plural package names |
-| Build & tooling | `references/build-and-tooling.md` | Alire details, `.gpr` project structure, gprbuild/gnatmake specifics, GNAT Studio / ALS / VS Code setup |
-| Verification | `references/verification.md` | GNAT SAS (`gnatsas`, static) vs GNAT DAS (`gnattest`/`gnatfuzz`/coverage, dynamic) usage, GNATcheck/MISRA, distinguishing static analysis from SPARK proof |
-| Embedded & runtimes | `references/embedded-and-runtimes.md` | Ravenscar/Jorvik profiles, light/embedded runtimes, bare-metal constraints |
-| Common pitfalls | `references/common-pitfalls.md` | Broader "what models get wrong" catalogue — stale idioms, hallucinated APIs, portability traps |
+| Topic               | Reference                             | Load When                                                                                                                                                  |
+| ------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Language core       | `references/language-core.md`         | Packages, private types, generics, tagged types/OOP, exceptions, tasking, access types, visibility/child units                                             |
+| Contracts           | `references/contracts.md`             | `Pre`/`Post`/`Contract_Cases`, `Global`/`Depends`, class-wide contracts, Liskov substitution                                                               |
+| Ada 2022 features   | `references/ada-2022-features.md`     | Target name `@`, declare expressions, `'Reduce`, delta aggregates, string interpolation                                                                    |
+| Strings & text      | `references/strings-and-text.md`      | String/Wide_String/Unbounded families, UTF-8/Unicode, `Ada.Strings.UTF_Encoding`, encodings, `Wide_Wide_Text_IO`, VSS                                      |
+| Style & naming      | `references/style-and-naming.md`      | Casing, indentation, `_T`/`_Access` suffixes, singular/plural package names                                                                                |
+| Build & tooling     | `references/build-and-tooling.md`     | Alire details, `.gpr` project structure, gprbuild/gnatmake specifics, GNAT Studio / ALS / VS Code setup                                                    |
+| Verification        | `references/verification.md`          | GNAT SAS (`gnatsas`, static) vs GNAT DAS (`gnattest`/`gnatfuzz`/coverage, dynamic) usage, GNATcheck/MISRA, distinguishing static analysis from SPARK proof |
+| Embedded & runtimes | `references/embedded-and-runtimes.md` | Ravenscar/Jorvik profiles, light/embedded runtimes, bare-metal constraints                                                                                 |
+| Common pitfalls     | `references/common-pitfalls.md`       | Broader "what models get wrong" catalogue — stale idioms, hallucinated APIs, portability traps                                                             |
 
 > **Status:** the files in `references/` have initial content (drawn from
 > community forum research on forum.ada-lang.io) and

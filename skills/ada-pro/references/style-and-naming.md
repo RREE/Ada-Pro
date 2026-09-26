@@ -26,7 +26,7 @@ _Content pending._
 ## Package and type names: singular vs plural
 
 - **Keep public package names distinct from public type and object names in the
-  same API.** Use plural child package names for collections of related types,
+  same API.** Use plural package names for collections of related types,
   e.g. `Labels.Label`, `Buttons.Button`, `Displays.Display` —
   not a package and its primary type sharing one name.
 - Related style-guide rule: avoid using the same identifier for different kinds

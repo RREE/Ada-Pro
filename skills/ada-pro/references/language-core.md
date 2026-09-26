@@ -23,7 +23,7 @@ exceptions, tasking, visibility and child units._
 
 ## I/O basics
 
-_Content pending._
+_When this section is needed, read the [Ada Programming Wikibook — Input Output](https://en.wikibooks.org/wiki/Ada_Programming/Input_Output) chapter and follow it rather than writing examples from memory._
 
 ## Strong typing
 
@@ -36,23 +36,23 @@ _Content pending._
 
 ## Numeric type selection
 
-_Content pending._
+_When this section is needed, read the [Ada Programming Wikibook — Type System](https://en.wikibooks.org/wiki/Ada_Programming/Type_System) chapter and follow it rather than writing examples from memory._
 
 ## Arrays
 
-_Content pending._
+_When this section is needed, read the [Ada Programming Wikibook — Arrays](https://en.wikibooks.org/wiki/Ada_Programming/Types/array) chapter and follow it rather than writing examples from memory._
 
 ## Records
 
-_Content pending._
+_When this section is needed, read the [Ada Programming Wikibook — Records](https://en.wikibooks.org/wiki/Ada_Programming/Types/record) chapter and follow it rather than writing examples from memory._
 
 ## Subprogram parameter modes
 
-_Content pending._
+_When this section is needed, read the [Ada Programming Wikibook — Subprograms](https://en.wikibooks.org/wiki/Ada_Programming/Subprograms) chapter and follow it rather than writing examples from memory._
 
 ## Return-by-value and build-in-place
 
-_Content pending._
+_When this section is needed, read the [Ada Programming Wikibook — Subprograms](https://en.wikibooks.org/wiki/Ada_Programming/Subprograms) chapter (function returns) and follow it rather than writing examples from memory._
 
 ## Generics
 
@@ -88,7 +88,7 @@ _Content pending._
 
 ## Containers (`Ada.Containers`)
 
-_Content pending._
+_When this section is needed, read the [Ada Programming Wikibook — Containers](https://en.wikibooks.org/wiki/Ada_Programming/Containers) chapter and follow it rather than writing examples from memory._
 
 ## Boolean operators (short-circuit)
 
@@ -113,5 +113,6 @@ Point SPARK-proof questions to AdaCore's
 and the SPARK User's Guide instead of guessing.
 
 ## References
+- [Ada Programming (Wikibook)](https://en.wikibooks.org/wiki/Ada_Programming) — the featured tutorial covering Ada 2005/2012/2022; read the matching chapter (linked from the sections above) before writing examples
 - Ada 2022 RM — Visibility: [RM Section 8](https://www.ada-auth.org/standards/22rm/html/RM-8.html)
 - SPARK User's Guide (ownership, proof): https://docs.adacore.com/spark2014-docs/html/ug/
