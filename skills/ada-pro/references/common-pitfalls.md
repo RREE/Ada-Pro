@@ -35,18 +35,19 @@ wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
   guarded second operand is a runtime check or proof failure waiting to happen
   (see `language-core.md`).
 
-## `'Image` is not stable output
+## `'Image` is not a stable interchange format
 
-- `'Image` spacing/formatting (and record field order, access values) is
-  **implementation-defined** — do not rely on it for stable/portable output.
-  Define an explicit formatting function, or `T'Put_Image`, for portable text.
+- Ada 2022 specifies default scalar images and an aggregate-like form for
+  composite images. It permits some spacing and grouping changes. An image
+  of a nonnull access value contains an implementation-specific location.
+  For exact output, define a formatter or `T'Put_Image`.
 
 ## Dispatching contracts
 
-- Plain `Pre`/`Post` on a dispatching (`overriding`) primitive is not inherited
-  and not checked on dispatching calls — use `Pre'Class`/`Post'Class`. Also
-  don't strengthen a `Pre'Class` / weaken a `Post'Class` in an override (LSP).
-  Full detail in `contracts.md`.
+- A specific `Pre` / `Post` on a concrete primitive is checked when a
+  dispatching call invokes that primitive. It does not propagate to overrides.
+  Use `Pre'Class` / `Post'Class` for inherited conditions. See `contracts.md`
+  for the call rules and how class-wide conditions combine.
 
 ## Name collisions ("SPARK" disambiguation)
 
@@ -89,6 +90,7 @@ wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
 
 ## References
 - Ada 2022 Reference Manual (unit index): https://www.ada-auth.org/standards/22rm/html/RM-TOC.html
+- [Ada 2022 RM — Image attributes](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-4-10.html)
 - GNAT RM — Implementation of Ada 2022 features: https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-of-Ada-2022-Features.html
 - Forum research this file draws on: forum.ada-lang.io threads (beginner, string/UTF-8, style and formatter topics)
 - [Ada Programming Wikibook — Common Programming Errors](https://en.wikibooks.org/wiki/Ada_Programming/Errors) — cross-check pitfalls against this chapter before asserting them

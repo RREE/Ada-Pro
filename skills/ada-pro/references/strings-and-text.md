@@ -20,9 +20,10 @@ writing any non-ASCII string handling._
 
 - `String` is an array of `Character`; `Character` covers exactly 256
   Latin-1 values (RM 3.5.2). **Never assume `String` is UTF-8** — it is not.
-- The 32-bit `Wide_Wide_String` family is the practical Unicode workhorse;
-  the 16-bit `Wide_String` family is a middle ground that is rarely useful
-  today.
+- `Wide_Wide_String` holds Unicode code points in the standard library;
+  choose it when that representation fits the task. For extensive Unicode
+  text handling, consider VSS (below). The 16-bit `Wide_String` family is
+  rarely useful for new code.
 - Conversions between families: `Ada.Characters.Conversions`
   (`To_Wide_String` / `To_Wide_Wide_String`), and
   `Ada.Strings.Unbounded.To_String` / `To_Unbounded_String` (and their
@@ -107,9 +108,9 @@ end Demo;
 - **uxstrings** (`alr with uxstrings`) — Unicode-aware unbounded strings.
 - **Matreshka League** (`alr with matreshka_league`) — code-point-level
   strings, transcoders, regex, JSON/XML.
-- `'Image` output is implementation-defined — for stable text output use
-  `T'Put_Image` or an explicit formatting function (see
-  `common-pitfalls.md`).
+- Ada 2022 specifies much of the default `'Image` output, but permits some
+  variation. For exact text output, use an explicit formatter or `T'Put_Image`
+  (see `common-pitfalls.md`).
 
 ## References
 

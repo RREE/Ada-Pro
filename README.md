@@ -9,8 +9,8 @@ current Ada — Ada 2022 on the modern toolchain (Alire + GNAT FSF, GNAT Pro).
 
 - **Plain Ada only.** Writing, porting, reviewing, debugging `.ada` / `.ads` / `.adb` /
   `.gpr` files; packages, strong typing, generics, tagged types, exceptions,
-  tasking, contracts (`Pre` / `Post` / `Contract_Cases`), Alire projects, GNAT /
-  GNAT SAS tooling, embedded runtimes where they affect idiomatic Ada choices.
+  tasking, Ada contracts (`Pre` / `Post`), and GNAT's `Contract_Cases`;
+  Alire projects, GNAT / GNAT SAS tooling, and embedded runtimes.
 - **SPARK is cross-referenced, not covered.** Proof, assurance levels, and
   ownership/borrow reasoning belong to SPARK-specific material; this skill
   points to it rather than guessing.
@@ -29,20 +29,20 @@ current Ada — Ada 2022 on the modern toolchain (Alire + GNAT FSF, GNAT Pro).
 
 ```text
 Ada-Pro/
-  README.md                You are here
-  LICENSE                  MIT
-  skills/ada-pro/          The skill — copy or symlink this folder into an agent
-    SKILL.md               Always-on skill: correction map + rules + workflow
+  README.md
+  LICENSE
+  skills/ada-pro/
+    SKILL.md
     references/
-      language-core.md     Packages, types, generics, OOP, tasking, visibility
-      contracts.md         Pre/Post/Contract_Cases, class-wide contracts, LSP
-      ada-2022-features.md @, declare expressions, 'Reduce, delta aggregates
-      strings-and-text.md    String families, UTF-8/Unicode, encodings, VSS
-      style-and-naming.md    Casing, suffixes, singular/plural names
-      build-and-tooling.md Alire, gprbuild, .gpr files, GNAT Studio/ALS
-      verification.md      GNAT SAS & GNAT DAS & GNATcheck
-      embedded-and-runtimes.md  Ravenscar/Jorvik, light runtimes
-      common-pitfalls.md   Stale idioms, hallucinated APIs, portability traps
+      language-core.md
+      contracts.md
+      ada-2022-features.md
+      strings-and-text.md
+      style-and-naming.md
+      build-and-tooling.md
+      verification.md
+      embedded-and-runtimes.md
+      common-pitfalls.md
 ```
 
 `SKILL.md` stays short; the deep content lives in `references/`, loaded on

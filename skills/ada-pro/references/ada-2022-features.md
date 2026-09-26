@@ -36,8 +36,11 @@ _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
   `'Reduce` on arrays), fold over elements.
 - **Delta aggregates** — `(X with Delta => ...)` copies a record/array and
   overrides the listed components.
-- **String interpolation** (`Ada.Strings` `Interpolation`) and other 2022
-  conveniences (`'Result` in more places, parallel block).
+- **Parallel blocks** for explicit parallel execution.
+- **GNAT extension, not Ada 2022:** `f"...{Expression}..."` string
+  interpolation requires GNAT's extension mode (`-gnatX`). There is no standard
+  `Ada.Strings.Interpolation` package; use ordinary string operations for
+  portable Ada.
 - **Jorvik profile** — a spike over Ravenscar tasking (details in
   `embedded-and-runtimes.md`).
 
@@ -51,5 +54,6 @@ _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
 ## References
 - Ada 2022 Reference Manual: https://www.ada-auth.org/standards/22rm/html/RM-TOC.html
 - GNAT RM — Implementation of Ada 2022 features: https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-of-Ada-2022-Features.html
+- [GNAT RM — String interpolation extension](https://docs.adacore.com/gnat_rm-docs/html/gnat_rm/gnat_rm/gnat_language_extensions.html#string-interpolation)
 - What's New in Ada 2022 (learn.adacore.com): https://learn.adacore.com/courses/whats-new-in-ada-2022/
 - [Ada Programming Wikibook — New in Ada 2022](https://en.wikibooks.org/wiki/Ada_Programming/Ada_2022)

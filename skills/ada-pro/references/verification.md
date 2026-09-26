@@ -32,6 +32,11 @@ and dynamic verification/analysis tooling (GNAT SAS, GNAT DAS, GNATcheck)._
 
 A **separate** product family from GNAT SAS:
 
+- GNAT SAS is a commercial AdaCore product. `gnatcov` (GNATcoverage) and
+  `gnatcheck` also have open-source source distributions; neither is implied
+  by merely installing the GNAT FSF compiler. Check tool availability in the
+  chosen toolchain before prescribing a command.
+
 - Unit testing: `gnattest` (AUnit harness generation).
 - Fuzz testing: `gnatfuzz` (coverage-guided).
 - Structural coverage with **`gnatcov`**: MC/DC, statement coverage (Ada and
@@ -52,6 +57,7 @@ and the SPARK User's Guide.
 
 ## References
 - [GNAT SAS User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/gnatsas_ug/gnatsas_ug.html)
+- [GNATcoverage source](https://github.com/AdaCore/gnatcoverage) and [GNATcheck source](https://github.com/AdaCore/gnatcheck)
 - AdaCore agent skills for the DAS tools — consult these for exact subcommand
   semantics instead of guessing:
   [`gnattest`](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnattest),

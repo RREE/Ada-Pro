@@ -1,6 +1,6 @@
 ---
 name: ada-pro
-description: "Use when writing, reviewing, porting, or debugging Ada code — .ada/.adb/.ads/.gpr files, Ada packages, generics, tagged types, exceptions, tasking, contracts (Pre/Post/Contract_Cases), Alire (alr) projects, or GNAT/GNAT SAS tooling. Targets current Ada (Ada 2022) and the current toolchain (Alire + GNAT FSF, GNAT Pro). Focus is plain Ada; SPARK is only referenced in passing where relevant, not covered in depth. Not for unrelated languages. This skill exists specifically to correct outdated or hallucinated Ada knowledge — read it fully before writing or judging any Ada code."
+description: "Use when writing, reviewing, porting, or debugging Ada code — .ada/.adb/.ads/.gpr files, Ada packages, generics, tagged types, exceptions, tasking, strings/UTF-8/Unicode, Ada contracts and GNAT contract extensions, Alire (alr) projects, embedded/bare-metal Ada (Ravenscar/Jorvik, light runtimes), or GNAT/GNAT SAS tooling. Targets current Ada (Ada 2022) and the current toolchain (Alire + GNAT FSF, GNAT Pro). Focus is plain Ada; SPARK is only referenced in passing where relevant, not covered in depth. Not for unrelated languages. This skill exists specifically to correct outdated or hallucinated Ada knowledge — read it fully before writing or judging any Ada code."
 allowed-tools: Read, Edit, Write, Grep, Glob, Bash(alr:*), Bash(gnatmake:*), Bash(gprbuild:*), Bash(gnat:*), Bash(gnatsas:*), Bash(gnatformat:*), Bash(gnatcheck:*), Bash(gnatcov:*)
 license: MIT
 metadata:
@@ -62,7 +62,7 @@ tooling/ecosystem corrections.
 | Stale (do NOT use/say)                                                            | Current (use this instead)                                                                    | Why                                                                                                                                       |
 | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
 | `pragma Precondition (...)` / `pragma Postcondition (...)`                        | `with Pre => ...` / `with Post => ...` aspects                                                | Aspects (Ada 2012+) are the idiomatic, modern form.                                                                                       |
-| Plain `Pre` / `Post` on a dispatching (`overriding`) primitive of a `tagged` type | `Pre'Class` / `Post'Class`                                                                    | A specific `Pre`/`Post` is not checked for dispatching calls and is not properly inherited. Only the class-wide form governs dispatching. |
+| "A specific `Pre` / `Post` is skipped on dispatching calls"                     | Specific contracts are checked for the operation invoked; use `Pre'Class` / `Post'Class` for conditions that apply to descendants | Specific contracts do not propagate to overrides; class-wide contracts do. |
 | "The latest Ada is Ada 2012"                                                      | Ada 2022 is finalized and current                                                             | Use `-gnat2022` or `pragma Ada_2022` when relevant.                                                                                       |
 | `Ada.IO`, `Ada.Strings.Format`, `Ada.Collections` (as package names)              | `Ada.Text_IO`, `Ada.Strings.Fixed` / `Ada.Strings.Unbounded`, `Ada.Containers.Vectors` (etc.) | These exact names do not exist. Never invent a package name — say you're unsure and look it up rather than guessing.                      |
 
@@ -83,8 +83,9 @@ asserting from memory.
 
 **Use this skill when the task involves:** writing, porting, reviewing, or
 debugging `.ada` / `.adb` / `.ads` files; Ada packages, strong typing,
-generics, tagged types, exceptions, tasking; contracts (`Pre`, `Post`,
-`Contract_Cases`, `Global`, `Depends`); `.gpr` GNAT project files; Alire
+generics, tagged types, exceptions, tasking; Ada contracts (`Pre`, `Post`,
+`Global`) and GNAT-defined contract aspects (`Contract_Cases`, `Depends`,
+`Default_Initial_Condition`); `.gpr` GNAT project files; Alire
 (`alr`) project setup or dependency management; GNAT / GNAT SAS / GNATcheck
 tooling; embedded/bare-metal Ada (Ravenscar/Jorvik, light runtimes) — only as
 far as it affects idiomatic plain-Ada code, not deep RTOS design.
@@ -101,15 +102,17 @@ product name.
 
 - Default to Alire (`alr`) for project setup and dependency management:
   `alr init --bin myproj` / `alr init --lib myproj`, `alr with <crate>` to
-  add a project dependency, `alr build`, `alr run`, `alr toolchain --select`,
+  add a project dependency, `alr build`, `alr run`, `alr toolchain --select`
+  (check `alr toolchain --help` for the installed version),
   `alr search <crate>`, `alr get <crate>` to fetch a crate's sources,
   `alr install <crate>` to install a binary-tool crate to a shared prefix (distinct from `alr with`), `alr pin` to pin a dependency to a local path or Git repo, `alr exec` / `alr printenv` to run in or inspect the project environment.
 - Use `gprbuild -P <project>.gpr` (supports scenario variables like `-XMODE=release`) for anything with a `.gpr` file; use `gnatmake` only for a single file/closure without a project file.
 - Prefer strong, explicit types (derived types, subtypes with range/digits/delta constraints) over a single general-purpose numeric type.
 - Write contracts as aspects on the declaration: `function F (X : T) return
   U with Pre => <condition>, Post => F'Result = <expr>;`. Use `'Result` for the return value in `Post`, and `X'Old` for the entry-time value.
-- Use `Pre'Class` / `Post'Class` (not plain `Pre`/`Post`) on a `tagged`
-  type's dispatching (`overriding`) primitives.
+- Use `Pre'Class` / `Post'Class` when a contract on a tagged primitive must
+  apply to descendants. Specific `Pre` / `Post` contracts on concrete
+  primitives are also checked when a dispatching call invokes them.
 - Use `and then` / `or else` instead of `and`/`or` whenever short-circuit
   evaluation matters (dereference guards, division guards).
 - Qualify anything version-sensitive explicitly, e.g. "as of GNAT FSF
@@ -124,13 +127,13 @@ product name.
   `pragma Postcondition`, or the name "CodePeer" for the current static
   analysis tool.
 - Do NOT claim Ada 2012 is the current/latest standard.
-- Do NOT write a plain (non-class-wide) `Pre`/`Post` on a dispatching
-  primitive and assume it is inherited or checked for dispatching calls.
+- Do NOT assume a specific `Pre` / `Post` contract propagates to overrides.
+  It is checked when a dispatching call invokes the operation that declares it.
 - Do NOT use plain `and`/`or` where short-circuit evaluation is required for
   correctness.
-- Do NOT rely on the default `'Image` attribute for output that must be
-  stable/portable (its formatting is implementation-defined); define an
-  explicit formatting function (or `'Put_Image`) instead.
+- Do NOT use the default `'Image` as a stable interchange format. Ada 2022
+  specifies scalar images and the basic composite form, but permits some
+  output variations. Define an explicit formatter or `Put_Image` for exact output.
 - Do NOT invent standard-library package or subprogram names, or Alire
   commands that don't exist.
 - Do NOT attempt deep SPARK proof reasoning (assurance levels, ownership/
@@ -147,8 +150,8 @@ case"; pick the one matching the task at hand.
 | Topic               | Reference                             | Load When                                                                                                                                                  |
 | ------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Language core       | `references/language-core.md`         | Packages, private types, generics, tagged types/OOP, exceptions, tasking, access types, visibility/child units                                             |
-| Contracts           | `references/contracts.md`             | `Pre`/`Post`/`Contract_Cases`, `Global`/`Depends`, class-wide contracts, Liskov substitution                                                               |
-| Ada 2022 features   | `references/ada-2022-features.md`     | Target name `@`, declare expressions, `'Reduce`, delta aggregates, string interpolation                                                                    |
+| Contracts           | `references/contracts.md`             | Ada `Pre`/`Post`/`Global`, GNAT-defined `Contract_Cases`/`Depends`/`Default_Initial_Condition`, class-wide contracts                                    |
+| Ada 2022 features   | `references/ada-2022-features.md`     | Target name `@`, declare expressions, `'Reduce`, delta aggregates; GNAT string interpolation extension                                                      |
 | Strings & text      | `references/strings-and-text.md`      | String/Wide_String/Unbounded families, UTF-8/Unicode, `Ada.Strings.UTF_Encoding`, encodings, `Wide_Wide_Text_IO`, VSS                                      |
 | Style & naming      | `references/style-and-naming.md`      | Casing, indentation, `_T`/`_Access` suffixes, singular/plural package names                                                                                |
 | Build & tooling     | `references/build-and-tooling.md`     | Alire details, `.gpr` project structure, gprbuild/gnatmake specifics, GNAT Studio / ALS / VS Code setup                                                    |
@@ -156,16 +159,10 @@ case"; pick the one matching the task at hand.
 | Embedded & runtimes | `references/embedded-and-runtimes.md` | Ravenscar/Jorvik profiles, light/embedded runtimes, bare-metal constraints                                                                                 |
 | Common pitfalls     | `references/common-pitfalls.md`       | Broader "what models get wrong" catalogue — stale idioms, hallucinated APIs, portability traps                                                             |
 
-> **Status:** the files in `references/` have initial content (drawn from
-> community forum research on forum.ada-lang.io) and
-> are extended incrementally. If a reference file doesn't yet contain the answer
-> you need, fall back to the canonical sources below rather than guessing.
+If a reference file doesn't yet contain the answer you need, fall back to the
+canonical sources below rather than guessing.
 
 ## Knowledge Reference
-
-Ada 2022, GNAT FSF, GNAT Pro, Alire (`alr`), gprbuild, gnatmake, GNAT SAS
-(`gnatsas`), GNATcheck, GNAT Studio, Ada Language Server (ALS), Ravenscar,
-Jorvik, tagged types, generics, tasking, contracts (Pre/Post/Contract_Cases).
 
 Canonical sources — verify against these, do not rely on memory alone:
 
