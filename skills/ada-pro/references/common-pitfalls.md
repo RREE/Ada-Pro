@@ -49,6 +49,16 @@ wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
   Use `Pre'Class` / `Post'Class` for inherited conditions. See `contracts.md`
   for the call rules and how class-wide conditions combine.
 
+## Contracts can be disabled
+
+- GNAT ignores assertion aspects by default. A `Pre`, `Post`, `Pre'Class`,
+  or `Post'Class` declaration alone does not make its run-time check active.
+  Use `pragma Assertion_Policy (Check)` before the declaration or compile
+  its unit with `-gnata`. In Alire, `alr build --validation` enables contract
+  checks by default; `alr build --development` does not. Check for a local
+  assertion policy or custom profile switches that change the result.
+  Range and bounds checks have separate settings. See `contracts.md`.
+
 ## Name collisions ("SPARK" disambiguation)
 
 - "SPARK" is also an Apache web framework, a cluster engine, and an unrelated
@@ -79,9 +89,6 @@ wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
 
 ## Platform rough edges
 
-- Alire-installed tools can behave differently cross-platform (e.g. `gnatformat`
-  silently doing nothing on Windows for some users). Verify a tool actually ran
-  before debugging your code.
 - Ada's `String` is an array of `Character` (8-bit, Latin-1), **not UTF-8**.
   For real UTF-8 use `Ada.Strings.UTF_Encoding`; `Wide_Wide_Text_IO` encoding
   has known rough edges — don't paper over them confidently. Full detail,
@@ -89,6 +96,7 @@ wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
   Matreshka): `strings-and-text.md`.
 
 ## References
+
 - Ada 2022 Reference Manual (unit index): https://www.ada-auth.org/standards/22rm/html/RM-TOC.html
 - [Ada 2022 RM — Image attributes](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-4-10.html)
 - GNAT RM — Implementation of Ada 2022 features: https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-of-Ada-2022-Features.html

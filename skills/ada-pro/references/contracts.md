@@ -18,10 +18,45 @@ function Sqrt (X : Float) return Float
        Post => Sqrt'Result >= 0.0;
 ```
 
-- `'Result` names the return value in `Post`; `X'Old` captures the pre-state
-  value. Do **not** invent `in`/`out` keywords inside contracts.
+- `'Result` names the return value in a postcondition. `X'Old` refers to a
+  snapshot of `X` taken on entry. Do **not** invent `in`/`out` keywords inside
+  contracts.
 - Use `and then` / `or else` inside contracts whenever a guard must short-circuit
   (dereference, division, instance-above-manager).
+
+### Entry values with `'Old`
+
+`'Old` is allowed in a postcondition expression, including `Post'Class`.
+Its prefix must denote an object of a nonlimited type. For example:
+
+```ada
+procedure Increment (X : in out Natural)
+  with Pre  => X < Natural'Last,
+       Post => X = X'Old + 1;
+```
+
+For each relevant `'Old` occurrence in an enabled postcondition, Ada defines
+a separate constant initialized at the start of the called body. The
+postcondition uses that constant when it is checked on return.
+Copying a large array or record can cost time and storage. Check the cost
+before using `'Old` on a large object. A `Post'Class` expression can use
+`'Old` in the same way; its class-wide check also applies to descendant
+operations. See Ada 2022 RM 6.1.1 for the exact evaluation rules.
+
+### Enable run-time checks
+
+Contract aspects describe conditions, but their run-time checks depend on
+the assertion policy in effect where each aspect is specified. GNAT's default
+policy is `Ignore`, so a build without an explicit policy does not check
+`Pre`, `Post`, `Pre'Class`, or `Post'Class` at run time. To require checks,
+place `pragma Assertion_Policy (Check);` before the contract declarations,
+or compile their units with GNAT's `-gnata` switch. In an Alire crate, use
+`alr build --validation` to select the Validation profile, which enables
+contract checks by default. `alr build --development` selects the default
+Development profile, which leaves contract checks off by default. A local
+`Assertion_Policy` or custom Alire build switches can change the result.
+Verify the effective policy when testing a contract; ordinary range and
+bounds checks are separate.
 
 ## GNAT-defined `Contract_Cases`
 
@@ -83,6 +118,10 @@ and the SPARK User's Guide rather than attempting proof under this skill.
 - [Ada Programming Wikibook — Aspects](https://en.wikibooks.org/wiki/Ada_Programming/Aspects) — contract and other aspects, with examples
 - Ada 2022 RM — Aspect clauses: [RM 13.3.1](https://www.ada-auth.org/standards/22rm/html/RM-13-3-1.html)
 - RM — Dispatching: [RM 6.1.1](https://www.ada-auth.org/standards/22rm/html/RM-6-1-1.html)
+- [Ada 2022 RM — Assertion policies](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-11-4-2.html)
+- [GNAT RM — Default assertion policy](https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-Defined-Characteristics.html)
+- [GNAT User's Guide — `-gnata`](https://gcc.gnu.org/onlinedocs/gnat_ugn/Debugging-and-Assertion-Control.html)
+- [Alire build profiles and switches](https://alire.ada.dev/docs/)
 - [Ada 2022 RM — Global](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-6-1-2.html)
 - [GNAT RM — Implementation-defined aspects](https://docs.adacore.com/gnat_rm-docs/html/gnat_rm/gnat_rm/implementation_defined_aspects.html)
 - SPARK UG — OOP & Liskov Substitution: https://docs.adacore.com/spark2014-docs/html/ug/en/source/object_oriented_programming.html

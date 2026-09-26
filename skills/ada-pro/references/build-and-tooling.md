@@ -24,13 +24,14 @@ Everything is managed through Alire:
 | `alr init --bin <name>` / `--lib <name>` | Scaffold an executable/library crate |
 | `alr with <crate>` | Add a **project dependency** |
 | `alr build` / `alr run` | Build / run the project |
+| `alr build --validation` / `alr build --development` | Use the Validation profile for contract checks; Development is the default profile and leaves them off by default |
 | `alr toolchain --select` | Select Alire's preferred toolchain; check `alr toolchain --help` for installed-version behavior |
 | `alr search <kw>` | Search the index before assuming a crate exists |
 | `alr get <crate>` | Fetch a crate's sources |
 | `alr pin <crate> --use=<path-or-URL>` | Pin a dependency to a local path or Git repo (`alr pin` also supports exact versions) |
 | `alr exec` / `alr printenv` | Run in / inspect the project environment |
 | `alr publish` | Publish a crate |
-| `alr install <crate>` | Install a **binary-tool** crate (e.g. `gnatformat`, `gnatsas`) to a shared prefix, available on `PATH` |
+| `alr install <crate>` | Install a **binary-tool** crate (e.g. `gnatformat`) to a shared prefix, available on `PATH` |
 
 Do **not** conflate `alr with` (project dependency) with `alr install` (global
 tool install). Note: some sources claim "there is no `alr install`" — that is

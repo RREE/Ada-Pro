@@ -7,6 +7,11 @@ and dynamic verification/analysis tooling (GNAT SAS, GNAT DAS, GNATcheck)._
 
 ## GNAT SAS — static defect-finding (ex-CodePeer)
 
+- **Availability:** GNAT SAS is an AdaCore commercial product, not part of
+  the free GNAT FSF toolchain or the public Alire crate catalog. AdaCore
+  directs new users to request a product evaluation and customers to GNAT
+  Tracker for downloads. Do not suggest `alr install gnatsas`; confirm that
+  the user has access to GNAT SAS before prescribing `gnatsas` commands.
 - The product was renamed: CLI is **`gnatsas`**, not `codepeer`. Commands are
   `gnatsas analyze` then `gnatsas report`.
 - Flags: `--mode=fast` (CI) / `--mode=deep` (thorough); results are files
@@ -30,17 +35,23 @@ and dynamic verification/analysis tooling (GNAT SAS, GNAT DAS, GNATcheck)._
 
 ## GNAT DAS — dynamic testing & coverage
 
-A **separate** product family from GNAT SAS:
+A **separate** product family from GNAT SAS. Check tool availability in the
+chosen toolchain before prescribing a command:
 
-- GNAT SAS is a commercial AdaCore product. `gnatcov` (GNATcoverage) and
-  `gnatcheck` also have open-source source distributions; neither is implied
-  by merely installing the GNAT FSF compiler. Check tool availability in the
-  chosen toolchain before prescribing a command.
+- **GNATcoverage (`gnatcov`):** Freely available as open-source source and as
+  public Alire `gnatcov` and `gnatcov_bin` crates. It measures structural
+  coverage, including statement and MC/DC coverage. The public Alire binary
+  supports Ada only; the full tool also supports C/C++.
+- **GNATtest (`gnattest`):** Freely available as open-source source and as
+  public Alire `gnattest` and `gnattest_bin` crates. It generates AUnit test
+  skeletons and a test harness.
+- **GNATfuzz (`gnatfuzz`):** Part of AdaCore's commercial GNAT DAS offering.
+  Its current guide requires GNAT Pro Ada x86_64, with GNAT Pro LLVM Ada also
+  required for some fuzzing engines. Do not present it as a freely available
+  GNAT FSF or Alire tool; confirm access before prescribing `gnatfuzz`.
 
-- Unit testing: `gnattest` (AUnit harness generation).
-- Fuzz testing: `gnatfuzz` (coverage-guided).
-- Structural coverage with **`gnatcov`**: MC/DC, statement coverage (Ada and
-  C/C++).
+GNATcheck is a separate coding-rules tool with public open-source source; it
+is not supplied merely by installing the GNAT FSF compiler.
 
 Do not conflate GNAT SAS (static defects) with GNAT DAS (dynamic
 testing/coverage) — marketed and licensed separately. Confirmed via
@@ -56,8 +67,14 @@ to AdaCore's
 and the SPARK User's Guide.
 
 ## References
-- [GNAT SAS User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/gnatsas_ug/gnatsas_ug.html)
-- [GNATcoverage source](https://github.com/AdaCore/gnatcoverage) and [GNATcheck source](https://github.com/AdaCore/gnatcheck)
+- [GNAT SAS User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/index.html)
+- [AdaCore GNAT SAS product page](https://www.adacore.com/static-analysis-suite) and [download options](https://www.adacore.com/download)
+- [Public Alire crate catalog](https://alire.ada.dev/crates.html)
+- [GNAT SAS installation guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/introduction.html)
+- [GNATcoverage source](https://github.com/AdaCore/gnatcoverage), [Alire crate](https://alire.ada.dev/crates/gnatcov), and [Alire binary](https://alire.ada.dev/crates/gnatcov_bin)
+- [GNATtest source](https://github.com/AdaCore/gnattest), [Alire crate](https://alire.ada.dev/crates/gnattest), and [Alire binary](https://alire.ada.dev/crates/gnattest_bin)
+- [GNATfuzz User's Guide (toolchain requirements)](https://docs.adacore.com/live/wave/gnatdas/html/gnatdas_ug/gnatfuzz/gnatfuzz_part.html) and [GNAT DAS product page](https://www.adacore.com/dynamic-analysis-suite)
+- [GNATcheck source](https://github.com/AdaCore/gnatcheck)
 - AdaCore agent skills for the DAS tools — consult these for exact subcommand
   semantics instead of guessing:
   [`gnattest`](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/gnattest),

@@ -8,9 +8,10 @@ _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
 
 - **Ada 2022 is the current, finalized standard.** The claim "the latest Ada is
   Ada 2012" is stale (correction-map core rule).
+
 - GNAT does **not** default to Ada 2022.
-  Enable Ada 2022 explicitly with
-  `-gnat2022` or `pragma Ada_2022`.
+  Enable Ada 2022 explicitly with `-gnat2022` or `pragma Ada_2022`.
+
 - With Alire, select Ada 2022 in `alire.toml` via build switches —
   `alr init` does not do this for you:
 
@@ -37,10 +38,6 @@ _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
 - **Delta aggregates** — `(X with Delta => ...)` copies a record/array and
   overrides the listed components.
 - **Parallel blocks** for explicit parallel execution.
-- **GNAT extension, not Ada 2022:** `f"...{Expression}..."` string
-  interpolation requires GNAT's extension mode (`-gnatX`). There is no standard
-  `Ada.Strings.Interpolation` package; use ordinary string operations for
-  portable Ada.
 - **Jorvik profile** — a spike over Ravenscar tasking (details in
   `embedded-and-runtimes.md`).
 
@@ -52,6 +49,7 @@ _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
   present to-new-feature behavior as timeless.
 
 ## References
+
 - Ada 2022 Reference Manual: https://www.ada-auth.org/standards/22rm/html/RM-TOC.html
 - GNAT RM — Implementation of Ada 2022 features: https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-of-Ada-2022-Features.html
 - [GNAT RM — String interpolation extension](https://docs.adacore.com/gnat_rm-docs/html/gnat_rm/gnat_rm/gnat_language_extensions.html#string-interpolation)
