@@ -76,4 +76,5 @@ Real crates to rely on (not hallucinated):
 ## References
 - [AdaCore's `alire` skill](https://github.com/AdaCore/skills/tree/main/plugins/adacore/skills/alire) — authoritative `alr` subcommand reference; consult for exact usage/edge cases instead of guessing
 - [Alire documentation](https://alire.ada.dev/docs/)
+- [Ada Programming Wikibook — Finding and Installing Ada](https://en.wikibooks.org/wiki/Ada_Programming/Installing) and [Building an Ada program](https://en.wikibooks.org/wiki/Ada_Programming/Building) — toolchain-setup walkthroughs
 - [GNAT User's Guide](https://docs.adacore.com/live/wave/gnat_ugn/html/gnat_ugn/gnat_ugn.html)

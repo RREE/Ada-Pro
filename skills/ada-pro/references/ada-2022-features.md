@@ -52,3 +52,4 @@ _Deep-dive reference for the `Ada-Pro` skill. Loaded on demand._
 - Ada 2022 Reference Manual: https://www.ada-auth.org/standards/22rm/html/RM-TOC.html
 - GNAT RM — Implementation of Ada 2022 features: https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-of-Ada-2022-Features.html
 - What's New in Ada 2022 (learn.adacore.com): https://learn.adacore.com/courses/whats-new-in-ada-2022/
+- [Ada Programming Wikibook — New in Ada 2022](https://en.wikibooks.org/wiki/Ada_Programming/Ada_2022)

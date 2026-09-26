@@ -37,3 +37,4 @@ _Content pending._
 
 - [Ada Quality and Style Guide](https://ada-lang.io/docs/style-guide/Ada_Style_Guide/) — the community-maintained update of the Ada 95 Quality & Style guide to Ada 2012 (adapted from the [Ada Style Guide on Wikibooks](https://en.wikibooks.org/wiki/Ada_Style_Guide))
 - [Style Guide §3.2 — Naming Conventions](https://ada-lang.io/docs/style-guide/s3/02/)
+- [Ada Programming Wikibook — Coding Standards](https://en.wikibooks.org/wiki/Ada_Programming/Coding_standards)

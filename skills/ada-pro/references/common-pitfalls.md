@@ -91,3 +91,4 @@ wrong" style catalogue — stale idioms, hallucinated APIs, portability traps._
 - Ada 2022 Reference Manual (unit index): https://www.ada-auth.org/standards/22rm/html/RM-TOC.html
 - GNAT RM — Implementation of Ada 2022 features: https://gcc.gnu.org/onlinedocs/gnat_rm/Implementation-of-Ada-2022-Features.html
 - Forum research this file draws on: forum.ada-lang.io threads (beginner, string/UTF-8, style and formatter topics)
+- [Ada Programming Wikibook — Common Programming Errors](https://en.wikibooks.org/wiki/Ada_Programming/Errors) — cross-check pitfalls against this chapter before asserting them

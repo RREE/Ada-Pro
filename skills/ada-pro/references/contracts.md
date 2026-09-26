@@ -72,6 +72,7 @@ ownership/borrow are SPARK-proof territory. Point the user to AdaCore's
 and the SPARK User's Guide rather than attempting proof under this skill.
 
 ## References
+- [Ada Programming Wikibook — Aspects](https://en.wikibooks.org/wiki/Ada_Programming/Aspects) — contract and other aspects, with examples
 - Ada 2022 RM — Aspect clauses: [RM 13.3.1](https://www.ada-auth.org/standards/22rm/html/RM-13-3-1.html)
 - RM — Dispatching: [RM 6.1.1](https://www.ada-auth.org/standards/22rm/html/RM-6-1-1.html)
 - SPARK UG — OOP & Liskov Substitution: https://docs.adacore.com/spark2014-docs/html/ug/en/source/object_oriented_programming.html

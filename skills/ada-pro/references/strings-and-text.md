@@ -119,3 +119,4 @@ end Demo;
 - [learn.adacore.com — Advanced Ada: Strings](https://learn.adacore.com/courses/advanced-ada/parts/data_types/strings.html)
 - [Alire — Unicode guidelines](https://alire.ada.dev/docs/unicode.html)
 - [Ada 2022 RM — A.4.11 String Encoding](https://www.ada-auth.org/standards/22rm/html/RM-A-4-11.html)
+- [Ada Programming Wikibook — Strings](https://en.wikibooks.org/wiki/Ada_Programming/Strings)

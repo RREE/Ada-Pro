@@ -113,6 +113,6 @@ Point SPARK-proof questions to AdaCore's
 and the SPARK User's Guide instead of guessing.
 
 ## References
-- [Ada Programming (Wikibook)](https://en.wikibooks.org/wiki/Ada_Programming) — the featured tutorial covering Ada 2005/2012/2022; read the matching chapter (linked from the sections above) before writing examples
+- [Ada Programming (Wikibook)](https://en.wikibooks.org/wiki/Ada_Programming) — the featured tutorial covering Ada 2005/2012/2022; read the matching chapter (linked from the sections above) before writing examples. Chapters for the filled sections: [Packages](https://en.wikibooks.org/wiki/Ada_Programming/Packages), [Generics](https://en.wikibooks.org/wiki/Ada_Programming/Generics), [Object Orientation](https://en.wikibooks.org/wiki/Ada_Programming/Object_Orientation), [Exceptions](https://en.wikibooks.org/wiki/Ada_Programming/Exceptions), [Tasking](https://en.wikibooks.org/wiki/Ada_Programming/Tasking)
 - Ada 2022 RM — Visibility: [RM Section 8](https://www.ada-auth.org/standards/22rm/html/RM-8.html)
 - SPARK User's Guide (ownership, proof): https://docs.adacore.com/spark2014-docs/html/ug/
