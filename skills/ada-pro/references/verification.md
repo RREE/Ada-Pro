@@ -5,6 +5,40 @@ and dynamic verification/analysis tooling (GNAT SAS, GNAT DAS, GNATcheck)._
 
 > Sources: `AdaCore/gnat-foundry-intersection` and gnatsas documentation.
 
+## Test crates
+
+For an Alire project, put tests in a nested `tests/` subcrate with its own
+`alire.toml` and a path pin to the parent crate. Keep test-only dependencies
+there. See the `alire` skill's `references/testing.md` for the test-crate setup,
+including AUnit and GNATtest.
+
+## GNAT DAS — dynamic testing & coverage
+
+A **separate** product family from GNAT SAS. Check tool availability in the
+chosen toolchain before prescribing a command:
+
+- **GNATcoverage (`gnatcov`):** Freely available as open-source source and as
+  public Alire `gnatcov` and `gnatcov_bin` crates. Install the binary with
+  `alr install gnatcov_bin`. It measures structural coverage, including
+  statement and MC/DC coverage. The public Alire binary
+  supports Ada only; the full tool also supports C/C++.
+- **GNATtest (`gnattest`):** Freely available as open-source source and as
+  public Alire `gnattest` and `gnattest_bin` crates. Install the binary with
+  `alr install gnattest_bin`. It generates AUnit test skeletons and a test
+  harness.
+- **GNATfuzz (`gnatfuzz`):** Part of AdaCore's commercial GNAT DAS offering.
+  Its current guide requires GNAT Pro Ada x86_64, with GNAT Pro LLVM Ada also
+  required for some fuzzing engines. Do not present it as a freely available
+  GNAT FSF or Alire tool; confirm access before prescribing `gnatfuzz`.
+
+GNATcheck is a separate coding-rules tool with public open-source source; it
+is not supplied merely by installing the GNAT FSF compiler.
+
+Do not conflate GNAT SAS (static defects) with GNAT DAS (dynamic
+testing/coverage) — marketed and licensed separately. Confirmed via
+[`AdaCore/gnat-foundry-intersection`](https://github.com/AdaCore/gnat-foundry-intersection)
+and adacore.com/gnatpro.
+
 ## GNAT SAS — static defect-finding (ex-CodePeer)
 
 - **Availability:** GNAT SAS is an AdaCore commercial product, not part of
@@ -33,31 +67,6 @@ and dynamic verification/analysis tooling (GNAT SAS, GNAT DAS, GNATcheck)._
 - "GNAT SAS / CodePeer proves no runtime errors" is **wrong** (correction-map
   rule). They are complementary tools, not substitutes.
 
-## GNAT DAS — dynamic testing & coverage
-
-A **separate** product family from GNAT SAS. Check tool availability in the
-chosen toolchain before prescribing a command:
-
-- **GNATcoverage (`gnatcov`):** Freely available as open-source source and as
-  public Alire `gnatcov` and `gnatcov_bin` crates. It measures structural
-  coverage, including statement and MC/DC coverage. The public Alire binary
-  supports Ada only; the full tool also supports C/C++.
-- **GNATtest (`gnattest`):** Freely available as open-source source and as
-  public Alire `gnattest` and `gnattest_bin` crates. It generates AUnit test
-  skeletons and a test harness.
-- **GNATfuzz (`gnatfuzz`):** Part of AdaCore's commercial GNAT DAS offering.
-  Its current guide requires GNAT Pro Ada x86_64, with GNAT Pro LLVM Ada also
-  required for some fuzzing engines. Do not present it as a freely available
-  GNAT FSF or Alire tool; confirm access before prescribing `gnatfuzz`.
-
-GNATcheck is a separate coding-rules tool with public open-source source; it
-is not supplied merely by installing the GNAT FSF compiler.
-
-Do not conflate GNAT SAS (static defects) with GNAT DAS (dynamic
-testing/coverage) — marketed and licensed separately. Confirmed via
-[`AdaCore/gnat-foundry-intersection`](https://github.com/AdaCore/gnat-foundry-intersection)
-and adacore.com/gnatpro.
-
 ## Explicitly NOT covered here
 
 GNATprove (SPARK-only formal proof): assurance levels, loop invariants, ghost
@@ -67,10 +76,8 @@ to AdaCore's
 and the SPARK User's Guide.
 
 ## References
-- [GNAT SAS User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/index.html)
-- [AdaCore GNAT SAS product page](https://www.adacore.com/static-analysis-suite) and [download options](https://www.adacore.com/download)
+
 - [Public Alire crate catalog](https://alire.ada.dev/crates.html)
-- [GNAT SAS installation guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/introduction.html)
 - [GNATcoverage source](https://github.com/AdaCore/gnatcoverage), [Alire crate](https://alire.ada.dev/crates/gnatcov), and [Alire binary](https://alire.ada.dev/crates/gnatcov_bin)
 - [GNATtest source](https://github.com/AdaCore/gnattest), [Alire crate](https://alire.ada.dev/crates/gnattest), and [Alire binary](https://alire.ada.dev/crates/gnattest_bin)
 - [GNATfuzz User's Guide (toolchain requirements)](https://docs.adacore.com/live/wave/gnatdas/html/gnatdas_ug/gnatfuzz/gnatfuzz_part.html) and [GNAT DAS product page](https://www.adacore.com/dynamic-analysis-suite)
@@ -85,3 +92,6 @@ and the SPARK User's Guide.
   `gnatfuzz`, `gnatprove`, `gnattest` (linked above). Do not assume `/gnatsas`
   exists as a slash command; consult `gnatsas --help` and the User's Guide
   instead.
+- GNAT SAS User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/index.html)
+- [AdaCore GNAT SAS product page](https://www.adacore.com/static-analysis-suite) and [download options](https://www.adacore.com/download)
+- [GNAT SAS installation guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/introduction.html)
