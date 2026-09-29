@@ -235,7 +235,7 @@ and the SPARK User's Guide instead of guessing.
 ## References
 
 - [Ada Programming (Wikibook)](https://en.wikibooks.org/wiki/Ada_Programming) — the featured tutorial covering Ada 2005/2012/2022; read the matching chapter (linked from the sections above) before writing examples. Chapters for the filled sections: [Packages](https://en.wikibooks.org/wiki/Ada_Programming/Packages), [Generics](https://en.wikibooks.org/wiki/Ada_Programming/Generics), [Object Orientation](https://en.wikibooks.org/wiki/Ada_Programming/Object_Orientation), [Exceptions](https://en.wikibooks.org/wiki/Ada_Programming/Exceptions), [Tasking](https://en.wikibooks.org/wiki/Ada_Programming/Tasking)
-- Ada 2022 RM — Visibility: [RM Section 8](https://www.ada-auth.org/standards/22rm/html/RM-8.html)
+- Ada 2022 RM — Visibility: [RM Section 8](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-8.html)
 - [Ada Programming Wikibook — Access types](https://en.wikibooks.org/wiki/Ada_Programming/Types/access) — examples and overview; check lifetime claims against the RM
 - Ada 2022 RM — [Access types](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-3-10.html), [accessibility](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-3-10-2.html), [storage management](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-13-11.html), [unchecked deallocation](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-13-11-2.html), [finalization](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-7-6-1.html)
 - [GNAT User's Guide — `System.Pool_Local`](https://gcc.gnu.org/onlinedocs/gnat_ugn/Some-Useful-Memory-Pools.html)

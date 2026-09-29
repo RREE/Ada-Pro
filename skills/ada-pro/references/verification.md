@@ -92,6 +92,5 @@ and the SPARK User's Guide.
   `gnatfuzz`, `gnatprove`, `gnattest` (linked above). Do not assume `/gnatsas`
   exists as a slash command; consult `gnatsas --help` and the User's Guide
   instead.
-- GNAT SAS User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/index.html)
+- [GNAT SAS (Static Analysis Suite) User's Guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/index.html)
 - [AdaCore GNAT SAS product page](https://www.adacore.com/static-analysis-suite) and [download options](https://www.adacore.com/download)
-- [GNAT SAS installation guide](https://docs.adacore.com/live/wave/gnatsas/html/user_guide/introduction.html)

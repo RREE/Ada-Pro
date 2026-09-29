@@ -40,8 +40,8 @@ Under Light and Light-Tasking:
 
 - **Fixed-point (`delta`)**: arithmetic is pure-integer only when `small` is a
   ratio of suitably-sized integers; the range may stop at `'Last - Delta`;
-  ordinary fixed-point arithmetic is not fully specified. Prefer integer for
-  cross-hardware stability unless fixed-point is required.
+  ordinary fixed-point arithmetic is not fully specified (RM 3.5.9, Annex G).
+  Prefer integer for cross-hardware stability unless fixed-point is required.
 - **Representation clauses** depend on machine endianness and storage unit —
   use them only for real hardware/ABI layout. They are not portable style.
 
@@ -56,4 +56,7 @@ When initialization order matters, control elaboration explicitly:
 ## References
 - GNAT UGX — cross-development / embedded targets: https://docs.adacore.com/live/wave/gnat_ugx/html/gnat_ugx/gnat_ugx.html
 - [GNAT Pro Light and Light-Tasking runtimes](https://docs.adacore.com/gnat_ugx-docs/html/gnat_ugx/gnat_ugx/gnat_runtimes.html)
-- Ada 2022 RM — Profiles: [RM D.13](https://www.ada-auth.org/standards/22rm/html/RM-D-13.html)
+- Ada 2022 RM — Profiles: [RM D.13](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-D-13.html)
+- Ada 2022 RM — Fixed point types: [RM 3.5.9](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-3-5-9.html)
+- Ada 2022 RM — Annex G, Numerics (accuracy/model requirements, incl. fixed point): [RM G](https://www.adaic.org/resources/add_content/standards/22rm/html/RM-G.html)
+

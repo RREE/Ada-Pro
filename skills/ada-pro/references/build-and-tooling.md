@@ -28,7 +28,7 @@ Everything is managed through Alire:
 | `alr toolchain --select` | Select Alire's preferred toolchain; check `alr toolchain --help` for installed-version behavior |
 | `alr search <kw>` | Search the index before assuming a crate exists |
 | `alr get <crate>` | Fetch a crate's sources |
-| `alr pin <crate> --use=<path-or-URL>` | Pin a dependency to a local path or Git repo (`alr pin` also supports exact versions) |
+| `alr pin <crate> --use <path-or-URL>` | Pin a dependency to a local path or Git repo (`alr pin` also supports exact versions); verified against the Alire changelog/docs — space-separated `--use <path>`, not `--use=<path>` |
 | `alr exec` / `alr printenv` | Run in / inspect the project environment |
 | `alr publish` | Publish a crate |
 | `alr install <crate>` | Install a **binary-tool** crate (e.g. `gnatformat`) to a shared prefix, available on `PATH` |
